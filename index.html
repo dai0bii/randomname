@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Random Tên Học Sinh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+        }
+        
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎲 Random Tên Học Sinh 🎲</h1>
+    <button onclick="randomName()">Chọn Ngẫu Nhiên</button>
+    <div id="result">Tên sẽ hiện ở đây</div>
+
+    <script>
+        const names = [
+            "Mai Thị Bảo Anh", "Mai Thị Kim Ánh", "Mai Thị Thùy Dương", "Nguyễn Thị Mỹ Hạnh",
+            "Huỳnh Ngọc Huy", "Lê Thị Thu Hương", "Nguyễn Văn Khải", "Nguyễn Văn Anh Khoa",
+            "Lê Thị Diễm Kiều", "Trương Hà Ngọc Linh", "Nguyễn Hồng Linh", "Nguyễn Linh Nga",
+            "Nguyễn Hoàng Ngọc", "Phan Lê Phương Nhi", "Nguyễn Thị Như Quỳnh", "Nguyễn Văn Tài",
+            "Nguyễn Hương Thảo", "Nguyễn Ngọc Nguyên Thảo", "Trương Bảo Thiên", "Trương Thị Tiên",
+            "Đỗ Thị Trang", "Nguyễn Minh Trí", "Nguyễn Đức Trọng", "Trà Thanh Tuệ",
+            "Trà Huỳnh Mai Uyên", "Trần Bảo Uyên", "Đỗ Thị Thanh Vân", "Nguyễn Như Khánh Việt",
+            "Phan Công Vũ", "Trương Phạm Tường Vy", "Nguyễn Thị Như Ý", "Lê Anh Đức",
+            "Mai Phước Hoài Linh", "Phan Ngọc Minh Nhật", "Nguyễn Văn Thắng", "Phan Quang Hoàng Vỹ"
+        ];
+
+        function randomName() {
+            const randomIndex = Math.floor(Math.random() * names.length);
+            document.getElementById("result").innerText = "👉 " + names[randomIndex];
+        }
+    </script>
+</body>
+
+</html>
