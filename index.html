@@ -1,76 +1,171 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Random PLAYERS</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+<meta charset="UTF-8">
+<title>🎲 Random Tên VIP 🎲</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        overflow: hidden;
+        color: #fff;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        background: linear-gradient(90deg, #ff6ec4, #7873f5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+        0% { background-position: -200px; }
+        100% { background-position: 200px; }
+    }
+
+    #result {
+        font-size: 2rem;
+        font-weight: 700;
+        padding: 20px 40px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        margin-top: 30px;
+        min-width: 300px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    #result.vip {
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+        color: #fff;
+        font-size: 2.4rem;
+        box-shadow: 0 0 30px #fff, 0 0 60px #ff9a9e, 0 0 90px #fad0c4;
+        transform: scale(1.1);
+    }
+
+    button {
+        margin-top: 50px;
+        padding: 15px 40px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #ff512f, #dd2476);
+        color: #fff;
+        font-weight: 700;
+        transition: 0.4s all;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    /* Confetti animation */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        top: -10px;
+        animation: fall 3s linear forwards;
+        opacity: 0.8;
+        border-radius: 50%;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
         }
-        
-        h1 {
-            color: #333;
-        }
-        
-        #result {
-            margin-top: 30px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #222;
-        }
-        
-        button {
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            transition: 0.3s;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    }
+</style>
 </head>
-
 <body>
-    <h1>🎲 Random 🎲</h1>
-    <button onclick="randomName()">Chọn Ngẫu Nhiên</button>
-    <div id="result">Tên sẽ hiện ở đây</div>
 
-    <script>
-        const names = [
-            "Mai Thị Bảo Anh", "Mai Thị Thùy Dương", "Nguyễn Thị Mỹ Hạnh",
-            "Huỳnh Ngọc Huy", "Lê Thị Thu Hương", "Nguyễn Văn Khải", "Nguyễn Văn Anh Khoa",
-            "Lê Thị Diễm Kiều", "Trương Hà Ngọc Linh", "Nguyễn Hồng Linh", "Nguyễn Linh Nga",
-            "Nguyễn Hoàng Ngọc", "Phan Lê Phương Nhi", "Nguyễn Văn Tài",
-            "Nguyễn Ngọc Nguyên Thảo", "Trương Bảo Thiên",
-            "Nguyễn Minh Trí", "Nguyễn Đức Trọng", "Trà Thanh Tuệ",
-            "Trần Bảo Uyên", "Đỗ Thị Thanh Vân", "Nguyễn Như Khánh Việt",
-            "Phan Công Vũ", "Trương Phạm Tường Vy", "Lê Anh Đức",
-            "Mai Phước Hoài Linh", "Phan Ngọc Minh Nhật", "Nguyễn Văn Thắng", "Phan Quang Hoàng Vỹ", "Nguyễn Ngọc Nguyên Thảo",  "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", "Nguyễn Ngọc Nguyên Thảo", 
-        ];
+<h1>🎲 Random🎲</h1>
+<button onclick="randomName()">Chọn Ngẫu Nhiên</button>
+<div id="result">Tên sẽ hiện ở đây</div>
 
-        function randomName() {
-            const randomIndex = Math.floor(Math.random() * names.length);
-            document.getElementById("result").innerText = "👉 " + names[randomIndex];
+<script>
+const names = [
+    { name: "Mai Thị Bảo Anh", weight: 1 },
+    { name: "Mai Thị Thùy Dương", weight: 1 },
+    { name: "Nguyễn Thị Mỹ Hạnh", weight: 1 },
+    { name: "Huỳnh Ngọc Huy", weight: 1 },
+    { name: "Lê Thị Thu Hương", weight: 1 },
+    { name: "Nguyễn Văn Khải", weight: 1 },
+    { name: "Nguyễn Văn Anh Khoa", weight: 1 },
+    { name: "Lê Thị Diễm Kiều", weight: 1 },
+    { name: "Trương Hà Ngọc Linh", weight: 1 },
+    { name: "Nguyễn Hồng Linh", weight: 1 },
+    { name: "Nguyễn Linh Nga", weight: 1 },
+    { name: "Nguyễn Hoàng Ngọc", weight: 1 },
+    { name: "Phan Lê Phương Nhi", weight: 1 },
+    { name: "Nguyễn Văn Tài", weight: 1 },
+    { name: "Nguyễn Ngọc Nguyên Thảo", weight: 5 }, // VIP trọng số cao
+    { name: "Trương Bảo Thiên", weight: 1 },
+    { name: "Nguyễn Minh Trí", weight: 1 },
+    { name: "Nguyễn Đức Trọng", weight: 1 },
+    { name: "Trà Thanh Tuệ", weight: 1 },
+    { name: "Trần Bảo Uyên", weight: 1 },
+    { name: "Đỗ Thị Thanh Vân", weight: 1 },
+    { name: "Nguyễn Như Khánh Việt", weight: 1 },
+    { name: "Phan Công Vũ", weight: 1 },
+    { name: "Trương Phạm Tường Vy", weight: 1 },
+    { name: "Lê Anh Đức", weight: 1 },
+    { name: "Mai Phước Hoài Linh", weight: 1 },
+    { name: "Phan Ngọc Minh Nhật", weight: 1 },
+    { name: "Nguyễn Văn Thắng", weight: 1 },
+    { name: "Phan Quang Hoàng Vỹ", weight: 1 }
+];
+
+function randomName() {
+    let totalWeight = names.reduce((sum, n) => sum + n.weight, 0);
+    let random = Math.random() * totalWeight;
+    for (let n of names) {
+        if (random < n.weight) {
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerText = "👉 " + n.name;
+
+            // Nếu tên VIP thì thêm hiệu ứng
+            if(n.name === "Nguyễn Ngọc Nguyên Thảo"){
+                resultDiv.classList.add("vip");
+                confettiEffect();
+            } else {
+                resultDiv.classList.remove("vip");
+            }
+            return;
         }
-    </script>
+        random -= n.weight;
+    }
+}
+
+// Confetti khi ra tên VIP
+function confettiEffect(){
+    for(let i=0;i<50;i++){
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random()*100 + "vw";
+        confetti.style.background = `hsl(${Math.random()*360}, 100%, 70%)`;
+        document.body.appendChild(confetti);
+        setTimeout(()=> confetti.remove(), 3000);
+    }
+}
+</script>
+
 </body>
-
-
 </html>
-
-
-
-
-
-
-
