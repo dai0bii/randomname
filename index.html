@@ -96,7 +96,7 @@
 </head>
 <body>
 
-<h1>🎲 Random🎲</h1>
+<h1>🎲 Random Tên Học Sinh VIP 🎲</h1>
 <button onclick="randomName()">Chọn Ngẫu Nhiên</button>
 <div id="result">Tên sẽ hiện ở đây</div>
 
@@ -140,27 +140,25 @@ function randomName() {
         if (random < n.weight) {
             const resultDiv = document.getElementById("result");
             resultDiv.innerText = "👉 " + n.name;
-
-            // Nếu tên VIP thì thêm hiệu ứng
-            if(n.name === "Nguyễn Ngọc Nguyên Thảo"){
-                resultDiv.classList.add("vip");
-                confettiEffect();
-            } else {
-                resultDiv.classList.remove("vip");
-            }
+            resultDiv.classList.add("vip");
+            confettiEffect(n.weight > 1); // tên VIP nặng confetti nhiều hơn
+            setTimeout(()=> resultDiv.classList.remove("vip"), 1000);
             return;
         }
         random -= n.weight;
     }
 }
 
-// Confetti khi ra tên VIP
-function confettiEffect(){
-    for(let i=0;i<50;i++){
+// Confetti cho tất cả tên, VIP nhiều hơn
+function confettiEffect(isVIP){
+    let count = isVIP ? 50 : 15; // VIP ra nhiều confetti
+    for(let i=0;i<count;i++){
         let confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.left = Math.random()*100 + "vw";
         confetti.style.background = `hsl(${Math.random()*360}, 100%, 70%)`;
+        confetti.style.width = isVIP ? "12px":"8px";
+        confetti.style.height = isVIP ? "12px":"8px";
         document.body.appendChild(confetti);
         setTimeout(()=> confetti.remove(), 3000);
     }
